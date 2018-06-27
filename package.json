@@ -1,0 +1,22 @@
+{
+  "proxy": "http://localhost:1337",
+  "name": "testreactapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express-session": "^1.15.6",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "0.9.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
