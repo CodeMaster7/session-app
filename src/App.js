@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './components/home/Home';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class App extends Component {
   constructor(){
@@ -21,6 +22,7 @@ class App extends Component {
   }
   render() {
     console.log(this.state.user)
+    console.log(this.props)
     return (
       <div className="App">
       my react app
@@ -40,4 +42,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state){
+  const { stateData } = state
+  return {
+    stateData
+  }
+}
+export default connect(mapStateToProps)(App);
