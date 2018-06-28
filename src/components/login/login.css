@@ -1,5 +1,6 @@
 .login-component {
   padding: 1rem;
-  background: radial-gradient(#eee -60%, cornflowerblue 60%);
+  background: linear-gradient(60deg, cornflowerblue 60%, #eee 120%);
+  background: radial-gradient(#eee -120%, cornflowerblue 80%);
   min-height: 100vh;
 }

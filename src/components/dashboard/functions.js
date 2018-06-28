@@ -42,18 +42,24 @@ const functions = {
     }
   },
   cdm() {
-    axios.get("/api/messages").then(res => {
-      this.setState(
-        {
-          messages: res.data,
-          fetchMessages: setInterval(this.getMessages, 1000 * 10)
-        },
-        () => {
-          var mc = document.getElementById("messages-container");
-          mc.scrollTop = mc.scrollHeight;
-        }
-      );
-    });
+    axios
+      .get("/api/messages")
+      .then(res => {
+        this.setState(
+          {
+            messages: res.data,
+            fetchMessages: setInterval(this.getMessages, 1000 * 10)
+          },
+          () => {
+            var mc = document.getElementById("messages-container");
+            mc.scrollTop = mc.scrollHeight;
+          }
+        );
+      })
+      .catch(error => {
+        console.log("got an error: ", error);
+        this.setState({ error: error.response.data.error });
+      });
   },
   logout() {
     axios.get("/api/logout").then(res => {

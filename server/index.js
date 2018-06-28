@@ -7,6 +7,7 @@ require("dotenv").config();
 const checkForSession = require("./middleware/checkForSession");
 const userCtrl = require("./controllers/userController");
 const messageCtrl = require("./controllers/messagesController");
+const isUserLoggedIn = require("./middleware/isUserLoggedIn");
 
 const app = express();
 
@@ -35,8 +36,8 @@ app.post("/api/register", userCtrl.register);
 app.get("/api/logout", userCtrl.logout);
 // // // // //
 // MESSAGE ENDPOINTS //
-app.get("/api/messages", messageCtrl.read);
-app.post("/api/message", messageCtrl.create);
+app.get("/api/messages", isUserLoggedIn, messageCtrl.read);
+app.post("/api/message", isUserLoggedIn, messageCtrl.create);
 // // // // //
 
 const PORT = process.env.SERVER_PORT;

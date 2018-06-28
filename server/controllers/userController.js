@@ -27,6 +27,7 @@ module.exports = {
       res.status(500).send({ error: "username taken" });
     } else {
       users.push({ username, password });
+      req.session.user.username = username;
       res.status(200).send({ username });
     }
   },

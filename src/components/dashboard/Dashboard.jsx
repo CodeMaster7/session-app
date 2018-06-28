@@ -2,13 +2,15 @@ import React from "react";
 import "./dashboard.css";
 import MessageFeed from "../messageFeed/MessageFeed";
 import functions from "./functions";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 
 export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       messages: [],
-      userInput: ""
+      userInput: "",
+      error: null
     };
     this.getMessages = this.getMessages.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -38,14 +40,18 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard-component">
-        <MessageFeed
-          logout={this.logout}
-          props={this.props}
-          state={this.state}
-          submitMessage={this.submitMessage}
-          handleUserInput={this.handleUserInput}
-          inputValue={this.state.userInput}
-        />
+        {this.state.error ? (
+          <ErrorMessage text={"You are not " + this.props.match.params.username + ", you are an imposter."} />
+        ) : (
+          <MessageFeed
+            logout={this.logout}
+            props={this.props}
+            state={this.state}
+            submitMessage={this.submitMessage}
+            handleUserInput={this.handleUserInput}
+            inputValue={this.state.userInput}
+          />
+        )}
       </div>
     );
   }

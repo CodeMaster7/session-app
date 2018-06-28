@@ -14,6 +14,9 @@ run `npm install`
 - using setInterval and componentWillUnmount to read from the server at a set interval
 - use the second parameter of the setState method, to run a function asynchronously
 - use javascript to manipulate the DOM directly (see: functions.js)
+- have the server store user data on the session object
+- allow users to sign in and authenticate existing users
+- use middleware to authenticate users
 
 ### What we could add
 

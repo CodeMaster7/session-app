@@ -8,8 +8,10 @@ module.exports = {
   },
   // create message
   create(req, res) {
-    const { text, author } = req.body;
+    const { text } = req.body;
     const timestamp = new Date().toTimeString().substr(0, 8);
+    // get author from req.session.user.username
+    const { username: author } = req.session.user;
     messages.push({ text, timestamp, author, id });
     id++;
     res.status(200).send(messages);
