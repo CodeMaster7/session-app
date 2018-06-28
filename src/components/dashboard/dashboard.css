@@ -1,5 +1,5 @@
 .dashboard-component {
-  background: cornflowerblue;
+  background: radial-gradient(#eee -60%, cornflowerblue 60%);
   padding: 0rem;
   min-height: 100vh;
 }

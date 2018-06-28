@@ -32,6 +32,7 @@ app.use(checkForSession);
 app.get("/api/user", userCtrl.read);
 app.post("/api/login", userCtrl.login);
 app.post("/api/register", userCtrl.register);
+app.get("/api/logout", userCtrl.logout);
 // // // // //
 // MESSAGE ENDPOINTS //
 app.get("/api/messages", messageCtrl.read);

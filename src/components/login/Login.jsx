@@ -1,6 +1,5 @@
 import React from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
 import Button from "../button/Button";
 import axios from "axios";
 import ErrorMessage from "../errorMessage/ErrorMessage";
@@ -51,12 +50,10 @@ export default class Login extends React.Component {
     axios
       .post("/api/register", { username, password })
       .then(res => {
-        console.log("status: ", res.status);
         if (res.status === 200) {
           // successful registration of user
           this.props.history.push("/dashboard/" + res.data.username);
         } else {
-          console.log("got error, setting state ", res.data.error);
           this.setStatus({
             // set error message on state
             error: res.data.error
@@ -64,7 +61,6 @@ export default class Login extends React.Component {
         }
       })
       .catch(error => {
-        console.log("caught this, ", error.response.data.error);
         // set error on state;
         this.setState({
           error: error.response.data.error
@@ -72,7 +68,6 @@ export default class Login extends React.Component {
       });
   }
   render() {
-    console.log(this.state);
     return (
       <div className="login-component">
         <h2>React Messenger App</h2>

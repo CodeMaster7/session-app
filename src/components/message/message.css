@@ -1,13 +1,17 @@
 .message-component {
   padding: 1rem;
-  border: 1px solid black;
   position: relative;
   overflow-wrap: break-word;
+  border-radius: 30px;
+  margin-bottom: 0.5rem;
+  border: 2px solid #aaa;
+  background: #ddd;
+  text-align: right;
 }
 .message-info {
   position: absolute;
   color: rgba(0, 0, 0, 0.6);
   top: 2px;
-  left: 2px;
+  left: 14px;
   font-size: 0.8rem;
 }

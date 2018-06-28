@@ -1,12 +1,8 @@
 import React from "react";
-import Message from "../message/Message";
-import Input from "../input/Input";
 import "./dashboard.css";
-import { Link } from "react-router-dom";
 import MessageFeed from "../messageFeed/MessageFeed";
-import axios from "axios";
+import functions from "./functions";
 
-// make this a class component, so it can use a CDM to get messages from server
 export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -17,75 +13,33 @@ export default class Dashboard extends React.Component {
     this.getMessages = this.getMessages.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
+    this.logout = this.logout.bind(this);
   }
   componentDidMount() {
-    axios.get("/api/messages").then(res => {
-      this.setState(
-        {
-          messages: res.data,
-          fetchMessages: setInterval(this.getMessages, 1000 * 10)
-        },
-        () => {
-          var mc = document.getElementById("messages-container");
-          mc.scrollTop = mc.scrollHeight;
-        }
-      );
-    });
+    functions.cdm.call(this);
   }
   componentWillUnmount() {
     clearInterval(this.state.fetchMessages);
   }
   getMessages() {
-    console.log("getting messages");
-    axios.get("/api/messages").then(res => {
-      this.setState(
-        {
-          messages: res.data
-        },
-        () => {
-          var mc = document.getElementById("messages-container");
-          mc.scrollTop = mc.scrollHeight;
-        }
-      );
-    });
+    functions.getMessages.call(this);
   }
   submitMessage(event) {
-    console.log("got this key: ", event.key);
-    // if pressed enter
-    if (event.key === "Enter" && this.state.userInput.length) {
-      // get timestamp
-      const timestamp = new Date().toTimeString().substr(0, 8);
-      // submit message, clear user input
-      // server erquires a text, timestamp and author
-      axios
-        .post("/api/message", {
-          text: this.state.userInput,
-          author: this.props.match.params.username
-        })
-        .then(res => {
-          this.setState(
-            {
-              userInput: "",
-              messages: res.data
-            },
-            () => {
-              var mc = document.getElementById("messages-container");
-              mc.scrollTop = mc.scrollHeight;
-            }
-          );
-        });
-    }
+    functions.submitMessage.call(this, event);
   }
   handleUserInput(event) {
     this.setState({
       userInput: event.target.value
     });
   }
+  logout() {
+    functions.logout.call(this);
+  }
   render() {
-    console.log("dash state", this.state);
     return (
       <div className="dashboard-component">
         <MessageFeed
+          logout={this.logout}
           props={this.props}
           state={this.state}
           submitMessage={this.submitMessage}

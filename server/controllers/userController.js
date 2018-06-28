@@ -2,7 +2,6 @@ var users = [];
 
 module.exports = {
   read(req, res) {
-    console.log("user controller, read");
     res.status(200).send(req.session.user);
   },
   login(req, res) {
@@ -25,11 +24,14 @@ module.exports = {
         return user.username === username;
       })
     ) {
-      console.log("registration failed, sending error: username taken");
       res.status(500).send({ error: "username taken" });
     } else {
       users.push({ username, password });
       res.status(200).send({ username });
     }
+  },
+  logout(req, res) {
+    req.session.destroy();
+    res.status(200).send(req.session);
   }
 };

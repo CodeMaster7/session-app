@@ -1,4 +1,5 @@
 .messagefeed-component {
+  padding: 0 1rem;
   width: 50%;
   min-width: 400px;
   max-width: 800px;
@@ -11,6 +12,10 @@
 #messages-container {
   overflow-y: auto;
   height: 80%;
+}
+.message-input {
+  width: 100%;
+  margin: 0.2rem auto;
 }
 @media screen and (max-width: 400px) {
   .messagefeed-component {
