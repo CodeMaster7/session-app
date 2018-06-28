@@ -1,31 +1,33 @@
-*{
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+/* General app-wide styles */
+:root {
+  text-align: center;
+}
+* {
+  font-family: "Ubuntu", sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
-
-.App {
-  text-align: center;
+input {
+  padding: 0.5rem;
+  background: #f1f1f1;
+  border-radius: 8px;
+  margin: 0.3rem;
+  border: 1px solid #333;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+a {
+  color: orange;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #333;
+  -webkit-text-fill-color: #333;
+  -webkit-box-shadow: 0 0 0px 1000px #f1f1f1 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
