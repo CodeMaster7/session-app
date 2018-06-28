@@ -5,6 +5,7 @@ var messages = [
     author: "me"
   }
 ];
+var id = 0;
 
 module.exports = {
   // get all messages
@@ -13,7 +14,11 @@ module.exports = {
   },
   // create message
   create(req, res) {
-    const { text, timestamp, author } = req.body;
-    messages.push({ text, timestamp, author });
+    const { text, author } = req.body;
+    console.log("got this messages: ", text);
+    const timestamp = new Date().toTimeString().substr(0, 8);
+    messages.push({ text, timestamp, author, id });
+    id++;
+    res.status(200).send(messages);
   }
 };

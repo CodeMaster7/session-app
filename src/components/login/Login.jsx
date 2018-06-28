@@ -75,7 +75,7 @@ export default class Login extends React.Component {
     console.log(this.state);
     return (
       <div className="login-component">
-        <h2>Session Messenger App</h2>
+        <h2>React Messenger App</h2>
         <br />
         {this.state.error && <ErrorMessage text={this.state.error} />}
         <input onChange={this.updateField} id="username" type="text" placeholder="enter username" />

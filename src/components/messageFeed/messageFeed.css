@@ -1,8 +1,19 @@
 .messagefeed-component {
   width: 50%;
-  min-width: 500px;
+  min-width: 400px;
   background: #f1f1f1;
-  min-height: 150vh;
+  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   box-shadow: 0 0 16px 8px rgba(0, 0, 0, 0.4);
+}
+#messages-container {
+  overflow-y: auto;
+  height: 80%;
+}
+@media screen and (max-width: 400px) {
+  .messagefeed-component {
+    width: 100%;
+    min-width: 0;
+  }
 }
