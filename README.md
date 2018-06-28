@@ -14,3 +14,7 @@ run `npm install`
 - using setInterval and componentWillUnmount to read from the server at a set interval
 - use the second parameter of the setState method, to run a function asynchronously
 - use javascript to manipulate the DOM directly (see: functions.js)
+
+### What we could add
+
+- allow users to submit an image-url for their avatar
