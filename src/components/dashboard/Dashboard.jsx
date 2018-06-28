@@ -14,7 +14,6 @@ export default class Dashboard extends React.Component {
       messages: [],
       userInput: ""
     };
-    this.mcRef = document.getElementById("messages-container");
     this.getMessages = this.getMessages.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitMessage = this.submitMessage.bind(this);

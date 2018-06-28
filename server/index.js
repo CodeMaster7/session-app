@@ -9,7 +9,9 @@ const userCtrl = require("./controllers/userController");
 const messageCtrl = require("./controllers/messagesController");
 
 const app = express();
+
 // TOP LEVEL MIDDLEWARE //
+app.use(express.static(__dirname + "/../build"));
 app.use(bodyParser.json());
 app.use(
   session({
